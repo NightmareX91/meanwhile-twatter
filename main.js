@@ -14,6 +14,21 @@ catch (e) {
     process.exit();
 }
 
+function randBase64() {
+    var plain = "";
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for(var i = 0; i < 20; i++) {
+        plain += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    var out = new Buffer(plain).toString("base64");
+    
+    console.log(out);
+
+    return out;
+}
+
 var client = new twitter({
     consumer_key: authDetails.consumer_key,
     consumer_secret: authDetails.consumer_secret,
