@@ -35,3 +35,11 @@ var client = new twitter({
     access_token_key: authDetails.access_token_key,
     access_token_secret: authDetails.access_token_secret
 });
+
+setInterval(function () {
+    client.post("statuses/update", {status: randBase64()}, function(err, tweet, response) {
+        if (err) {
+            throw err;
+        }
+    });
+}, 3600000);
